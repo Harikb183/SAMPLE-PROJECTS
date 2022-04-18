@@ -1,0 +1,144 @@
+{
+    "_version": "1.28.0",
+    "sap.app": {
+        "id": "kc.sensormanager",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "0.0.1"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "dataSources": {
+            "sensorSource": {
+                "type": "JSON",
+                "uri": "./localService/sensors.json"
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": false,
+        "dependencies": {
+            "minUI5Version": "1.84.0",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.ui.layout": {},
+                "sap.f": {},
+                "sap.suite.ui.generic.template": {},
+                "sap.suite.ui.microchart": {},
+                "sap.ui.comp": {},
+                "sap.ui.generic.app": {},
+                "sap.ui.table": {},
+                "sap.ushell": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "kc.sensormanager.i18n.i18n",
+                    "supportedLocales": [
+                        "de",
+                        "en"
+                    ],
+                    "fallbackLocale": "en"
+                }
+            },
+            "sensorModel": {
+                "type": "sap.ui.model.json.JSONModel",
+                "dataSource": "sensorSource",
+                "preload": true,
+                "settings": {
+                    "synchronizationMode": "None",
+                    "operationMode": "Server",
+                    "autoExpandSelect": true,
+                    "earlyRequests": true,
+                    "groupId": "$direct"
+                }
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "async": true,
+                "transition": "slide",
+                "viewPath": "kc.sensormanager.view",
+                "controlAggregation": "pages",
+                "controlId": "app",
+                "clearControlAggregation": false
+            },
+            "routes": [
+                {
+                    "name": "RouteSensors",
+                    "pattern": "",
+                    "target": [
+                        "TargetSensors"
+                    ]
+                },
+                {
+                    "name": "RouteSensorStatus",
+                    "pattern": "sensor/{index}",
+                    "target": [
+                        "TargetSensorStatus"
+                    ]
+                }
+            ],
+            "targets": {
+                "TargetSensors": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "Sensors",
+                    "viewName": "Sensors"
+                },
+                "TargetSensorStatus": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "viewId": "SensorStatus",
+                    "viewName": "SensorStatus",
+                    "viewLevel": 2
+                }
+            }
+        },
+        "rootView": {
+            "viewName": "kc.sensormanager.view.App",
+            "type": "XML",
+            "async": true,
+            "id": "App"
+        }
+    },
+    "sap.cloud": {
+        "public": true,
+        "service": "kc.sensormanager"
+    }
+}

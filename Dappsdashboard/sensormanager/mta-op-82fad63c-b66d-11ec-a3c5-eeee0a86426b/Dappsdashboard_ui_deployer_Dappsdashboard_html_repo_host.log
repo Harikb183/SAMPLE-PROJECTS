@@ -1,0 +1,4 @@
+#2.0#2022 04 07 12:25:19.011#Z#DEBUG#com.sap.cloud.lm.sl.xs2.82fad63c-b66d-11ec-a3c5-eeee0a86426b.Dappsdashboard_ui_deployer_Dappsdashboard_html_repo_host.startContentDeployTask#
+######org.cloudfoundry.multiapps.controller.persistence.services.ProcessLogger########flowable-async-job-executor-thread-12864###
+[PollDeployContentStatusExecution] [Dappsdashboard_ui_deployer] [INFO] Application content was successfully uploaded { CODE: '1002' }#
+
